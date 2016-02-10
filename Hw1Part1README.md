@@ -5,6 +5,9 @@ The stream is present here at http://stream.meetup.com/2/rsvps. The detailed doc
 
 Everytime some one does a rsvp on meetup.com, a json object is streamed. The data emitted contains details about the meetup event, member and meetup group.
 
+##Volume of the messages
+It varies depending on the time of the day but is generally more that 1 per minute (I have seen it upto 100 per minute as well).
+
 ##Sample JSON
 NOTE: Data dictionary present at www.meetup.com/meetup_api/docs/stream/2/rsvps
 
