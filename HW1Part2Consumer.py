@@ -11,6 +11,7 @@ from sys import stdout
 print ("start")
 #consuming the stream from source
 r = requests.get("http://stream.meetup.com/2/rsvps", stream=True)
+#stays on forever unless the stream stops
 for raw_rsvp in r.iter_lines():
     # loops over all the stream messages
     try:
@@ -22,6 +23,7 @@ for raw_rsvp in r.iter_lines():
             #Write output to stdout
             print group_state
             stdout.flush()
+    # Exception handling in case the state field is empy or the encoding is different
     except:
         print "Error"
         stdout.flush()
