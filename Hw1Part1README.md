@@ -94,3 +94,5 @@ In the consumer I am extracting the state of the meetup for which rsvp was done 
 The webpage, leveraging d3.js, shows the bar chart of count of rsvps by state, all getting updated realtime getting messages from websocket server that runs the consumer code.
 Sample screenshots present at HW1WebPageOutput1.png (https://github.com/ss4609/Storytelling-With-Streaming-Data/blob/master/media/HW1WebPageOutput1.png) and HW1WebPageOutput2.png (https://github.com/ss4609/Storytelling-With-Streaming-Data/blob/master/media/HW1WebPageOutput2.png).
 Reference for d3.js code - https://bost.ocks.org/mike/bar/3/
+
+An analysis/insight that we can gather from this application is the during business hours (common across pst and est), the highest rate of RSVP is CA followed by NY based on some spot tests done. Of course we would need to collect data over time to get a more detailed picture of the statewise RSVP trends.
