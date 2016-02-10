@@ -89,5 +89,5 @@ In the consumer I am extracting the state of the meetup for which rsvp was done 
 
 ##Visualization Webpage
 The webpage, leveraging d3.js, shows the bar chart of count of rsvps by state, all getting updated realtime getting messages from websocket server that runs the consumer code.
-Sample screenshots present at HW1WebPageOutput1.png and HW1WebPageOutput2.png.
+Sample screenshots present at HW1WebPageOutput1.png (https://github.com/ss4609/Storytelling-With-Streaming-Data/blob/master/media/HW1WebPageOutput1.png) and HW1WebPageOutput2.png (https://github.com/ss4609/Storytelling-With-Streaming-Data/blob/master/media/HW1WebPageOutput2.png).
 Reference for d3.js code - https://bost.ocks.org/mike/bar/3/
