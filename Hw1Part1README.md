@@ -1,5 +1,5 @@
 #HW1 Part 1
-##Consuming meetup.com rsvp event stream and plotting realtime rsvp counts by state
+##Consuming meetup.com rsvp event stream and plotting realtime rsvp counts by US States
 
 The stream is present here at http://stream.meetup.com/2/rsvps.
 
