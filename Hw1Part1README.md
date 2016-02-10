@@ -1,5 +1,5 @@
 #HW1 Part 1
-##Consuming meetup.com rsvp event stream
+##Consuming meetup.com rsvp event stream and plotting realtime rsvp counts by state
 
 The stream is present here at http://stream.meetup.com/2/rsvps. The detailed documentation is present at http://www.meetup.com/meetup_api/docs/stream/2/rsvps/.
 
@@ -83,3 +83,11 @@ NOTE: Data dictionary present at www.meetup.com/meetup_api/docs/stream/2/rsvps
     "group_lat": 51.07
   }
 }
+
+##Consumer
+In the consumer I am extracting the state of the meetup for which rsvp was done and streaming that via websocketd on port 8080
+
+##Visualization Webpage
+The webpage, leveraging d3.js, shows the bar chart of count of rsvps by state, all getting updated realtime getting messages from websocket server that runs the consumer code.
+Sample screenshots present at HW1WebPageOutput1.png and HW1WebPageOutput2.png.
+Reference for d3.js code - https://bost.ocks.org/mike/bar/3/
