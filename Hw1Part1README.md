@@ -1,9 +1,9 @@
 #HW1 Part 1
 ##Consuming meetup.com rsvp event stream and plotting realtime rsvp counts by state
 
-The stream is present here at http://stream.meetup.com/2/rsvps. The detailed documentation is present at http://www.meetup.com/meetup_api/docs/stream/2/rsvps/.
+The stream is present here at http://stream.meetup.com/2/rsvps.
 
-Everytime some one does a rsvp on meetup.com, a json object is streamed. The data emitted contains details about the meetup event, member and meetup group.
+Everytime some one does a rsvp on meetup.com, a json object is streamed. The data emitted contains details about the meetup event, member and meetup group (including group geo location).
 
 ##Volume of the messages
 It varies depending on the time of the day but is generally more that 1 per minute (I have seen it upto 100 per minute as well).
