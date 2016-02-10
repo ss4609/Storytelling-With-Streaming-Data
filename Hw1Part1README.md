@@ -89,9 +89,11 @@ NOTE: Data dictionary present at www.meetup.com/meetup_api/docs/stream/2/rsvps
 
 ##Consumer
 In the consumer I am extracting the state of the meetup for which rsvp was done and streaming that via websocketd on port 8080
+The cosumer code is present at https://github.com/ss4609/Storytelling-With-Streaming-Data/blob/master/HW1Part2Consumer.py
 
 ##Visualization Webpage
-The webpage, leveraging d3.js, shows the bar chart of count of rsvps by state, all getting updated realtime getting messages from websocket server that runs the consumer code.
+The webpage, leveraging d3.js, shows the bar chart of count of rsvps by state, all getting updated realtime getting messages from websocket server that runs the consumer code. The webpage code is present at https://github.com/ss4609/Storytelling-With-Streaming-Data/blob/master/HW1Part3Index.html.
+
 Sample screenshots present at HW1WebPageOutput1.png (https://github.com/ss4609/Storytelling-With-Streaming-Data/blob/master/media/HW1WebPageOutput1.png) and HW1WebPageOutput2.png (https://github.com/ss4609/Storytelling-With-Streaming-Data/blob/master/media/HW1WebPageOutput2.png).
 Reference for d3.js code - https://bost.ocks.org/mike/bar/3/
 
