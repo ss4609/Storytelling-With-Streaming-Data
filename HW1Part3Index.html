@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+  // helper function: log message to screen
+  var data = [
+  {state: "AL",    frequency:  0}, {state: "AK",    frequency:  0}, {state: "AZ",    frequency:  0}, {state: "AR",    frequency:  0}, {state: "CA",    frequency:  0}, {state: "CO",    frequency:  0}, {state: "CT",    frequency:  0}, {state: "DE",    frequency:  0}, {state: "DC",    frequency:  0}, {state: "FL",    frequency:  0}, {state: "GA",    frequency:  0}, {state: "HI",    frequency:  0}, {state: "ID",    frequency:  0}, {state: "IL",    frequency:  0}, {state: "IN",    frequency:  0}, {state: "IA",    frequency:  0}, {state: "KS",    frequency:  0}, {state: "KY",    frequency:  0}, {state: "LA",    frequency:  0}, {state: "ME",    frequency:  0}, {state: "MD",    frequency:  0}, {state: "MA",    frequency:  0}, {state: "MI",    frequency:  0}, {state: "MN",    frequency:  0}, {state: "MS",    frequency:  0}, {state: "MO",    frequency:  0}, {state: "MT",    frequency:  0}, {state: "NE",    frequency:  0}, {state: "NV",    frequency:  0}, {state: "NH",    frequency:  0}, {state: "NJ",    frequency:  0}, {state: "NM",    frequency:  0}, {state: "NY",    frequency:  0}, {state: "NC",    frequency:  0}, {state: "ND",    frequency:  0}, {state: "OH",    frequency:  0}, {state: "OK",    frequency:  0}, {state: "OR",    frequency:  0}, {state: "PA",    frequency:  0}, {state: "RI",    frequency:  0}, {state: "SC",    frequency:  0}, {state: "SD",    frequency:  0}, {state: "TN",    frequency:  0}, {state: "TX",    frequency:  0}, {state: "UT",    frequency:  0}, {state: "VT",    frequency:  0}, {state: "VA",    frequency:  0}, {state: "WA",    frequency:  0}, {state: "WV",    frequency:  0}, {state: "WI",    frequency:  0}, {state: "WY",    frequency:  0}
+];
+maxCount=1;
+  var stateDict = {"NY":1};
+  function log(msg, stateDict, maxCount) {
+  if (msg == "AL" || msg == "AK" || msg == "AZ" || msg == "AR" || msg == "CA" || msg == "CO" || msg == "CT" || msg == "DE" || msg == "DC" || msg == "FL" || msg == "GA" || msg == "HI" || msg == "ID" || msg == "IL" || msg == "IN" || msg == "IA" || msg == "KS" || msg == "KY" || msg == "LA" || msg == "ME" || msg == "MD" || msg == "MA" || msg == "MI" || msg == "MN" || msg == "MS" || msg == "MO" || msg == "MT" || msg == "NE" || msg == "NV" || msg == "NH" || msg == "NJ" || msg == "NM" || msg == "NY" || msg == "NC" || msg == "ND" || msg == "OH" || msg == "OK" || msg == "OR" || msg == "PA" || msg == "RI" || msg == "SC" || msg == "SD" || msg == "TN" || msg == "TX" || msg == "UT" || msg == "VT" || msg == "VA" || msg == "WA" || msg == "WV" || msg == "WI" || msg == "WY")
+  {
+   if (stateDict.hasOwnProperty(msg))
+  {
+  stateDict[msg]+=1;
+  }
+  else
+  {
+  stateDict[msg] = 1;
+  }
+  if (maxCount < stateDict[msg])
+  {
+  maxCount =stateDict[msg];
+  }
+  
+  
+ data.push({state: msg,    frequency:  stateDict[msg]});
+  
+
+draw(data);
+
+}
+}
+function type(d) {
+  d.value = +d.value; // coerce to number
+  return d;
+
+  }
+
+     var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+	
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+  // setup websocket with callbacks
+  var ws = new WebSocket('ws://localhost:8080/');
+  ws.onopen = function() {
+    log('CONNECT');
+  };
+  ws.onclose = function() {
+    log('DISCONNECT');
+  };
+  ws.onmessage = function(event) {
+    log( String(event.data), stateDict, maxCount);
+  };
+
+  function draw(data)
+  {
+
+x.domain(data.map(function(d) { return d.state; }));
+  y.domain([0, 50]);
+  
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Count of RSVP by State");var bars =svg.selectAll(".bar")
+      .data(data)
+	  
+    bars.enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.state); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("height", function(d) { return height - y(d.frequency); });
+;
+bars.exit().remove();
+  }
+  </script>
