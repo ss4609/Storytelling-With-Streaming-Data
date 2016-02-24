@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+  // setup websocket with callbacks
+  var ws = new WebSocket('ws://localhost:8080/');
+  ws.onopen =     function() {
+  log('CONNECT')
+  };
+  
+  ws.onclose = function() {
+    log('DISCONNECT');
+  };
+  ws.onmessage = function(event) {
+    d3.select('ul').append('li').text(event.data);
+  };
+  
+  </script>
+  </body>
