@@ -1,6 +1,6 @@
 #Overview
 
-In this home work, I have again chosen stream data from meetup.com which sends an event everytime some one signs up for the meetup. Details regarding the stream including the data dictionary of the stream is present in readme file of previous homework.
+In this home work, I have again chosen stream data from meetup.com which sends an event everytime some one signs up for the meetup. Details regarding the stream including the data dictionary of the stream is present in readme file of previous homework (https://github.com/ss4609/Storytelling-With-Streaming-Data/blob/master/Hw1Part1README.md).
 
 So here I am calculating the rate of sign ups and show an alert if the signup activity goes beyond a certain threshold (configurable via command line parameter). I sever these alerts via a websocketd server on port 8080. I also created a webpage that listens to port 8080 and prints the notification. Apart from alerting when sign up activity is high, I also notify if the signup activity has returned back to normal.
 
