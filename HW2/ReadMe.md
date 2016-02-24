@@ -12,7 +12,7 @@ insert.py - inserts the time differe between signups to redis (keeps for 60 s)
 ##run command 1 (starts the redis server)
 redis-server
 
-##run command 2
+##run command 2 (more details and comments about this is present here https://github.com/ss4609/Storytelling-With-Streaming-Data/blob/master/HW2/registerStreamRate.sh)
 python ingestRsvpStream.py | python diff.py| python insert.py
 
 
