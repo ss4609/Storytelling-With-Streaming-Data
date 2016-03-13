@@ -3,7 +3,7 @@ Note: all the below commands should be run on separate terminal windows
 
 redis-server
 python ingest.py | python  insertStatesAndCalcDiff.py | python insertTime.py 
-python apiState.py 
+
 websocketd --port=8080 python alertUnlikelyStateRsvp.py .1
 
 Note: below are the urls
