@@ -31,6 +31,10 @@ alertUnlikelyStateRsvp.html
 
 http://127.0.0.1:5000/distributionChart
 
+#Sample Alerts
+RSVP occurred from Unlikely state: WI (probability = 0.00604229607251) 
+RSVP occurred from Unlikely state: OR (probability = 0.0275650842266) 
+
 #Dependencies
 Python 2.7
 Non basic python packages = requests-2.9.1
